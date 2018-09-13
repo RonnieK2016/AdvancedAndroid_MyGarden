@@ -41,7 +41,7 @@ public class PlantWateringService extends IntentService {
         long timeNow = System.currentTimeMillis();
         contentValues.put(PlantContract.PlantEntry.COLUMN_LAST_WATERED_TIME, timeNow);
         getContentResolver().update(plantsUri, contentValues,
-                PlantContract.PlantEntry.COLUMN_LAST_WATERED_TIME  + ">?",
+                PlantContract.PlantEntry.COLUMN_LAST_WATERED_TIME  + "<?",
                 new String[]{String.valueOf(timeNow - PlantUtils.MAX_AGE_WITHOUT_WATER)});
     }
 
